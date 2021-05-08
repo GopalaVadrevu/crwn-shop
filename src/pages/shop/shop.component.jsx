@@ -7,6 +7,8 @@ import PreviewCollection from '../../components/preview/preview.component'
 
 
 
+
+
 class ShopPage extends React.Component{
 
     constructor(props){
@@ -20,6 +22,7 @@ class ShopPage extends React.Component{
         const {collections} = this.state;
         return(
             <div className='shop-page'>
+            
                 {
                     collections.map(({id, ...otherCollectionProps}) => (
                         <PreviewCollection key={id} {...otherCollectionProps} />
