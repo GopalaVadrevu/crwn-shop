@@ -1,10 +1,10 @@
 {
   "short_name": "React App",
-  "name": "Create React App Sample",
+  "name": "Crown Cloth Shoppin",
   "icons": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
+      "src": "crown-48.ico",
+      "sizes": "64x64 32x32 48X48",
       "type": "image/x-icon"
     },
     {
