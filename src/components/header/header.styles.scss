@@ -20,7 +20,21 @@
   
       .option {
         padding: 10px 15px;
+        cursor: pointer;
       }
+ 
     }
+  }
+  .welcome-font{
+    font-size:medium;
+    font-style: italic;
+    font-weight: bold;
+    color:indianred;
+    font-family: fantasy;
+    //text-decoration: underline;
+    text-shadow: 2px 2px 3px black;
+    letter-spacing: 4px;
+    word-spacing: 2px;
+    font-variant: small-caps;
   }
   

@@ -5,12 +5,22 @@ import {Link} from 'react-router-dom';
 
 import {ReactComponent as Logo} from '../../assets/crown.svg';
 
-const Header =() =>(
+import {auth} from '../../firebase/firebase.utils';
+
+const Header =({currentUser}) =>(
 
     <div className='header'>
         <Link className='container' to ='/'>
             <Logo />
+            {currentUser?
+            <div className='welcome-font'>
+            { (`Welcome ${currentUser.displayName}`).toUpperCase() }
+            </div>
+                :
+            ''
+            }
         </Link>
+        
         <div className="options">
             <Link className="option" to='/shop'>
                 SHOP
@@ -19,7 +29,18 @@ const Header =() =>(
                 CONTACT
             </Link>
             <Link className="option" to='/signin'>
+            {
+
+                currentUser?
+                <div className='option' onClick={()=>auth.signOut()}>
+                SIGN OUT
+                </div>
+                :
+                <Link className='option' to='/signin'>
                 SIGN IN
+                </Link>
+            }
+
             </Link>
         
         </div>
