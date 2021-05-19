@@ -1,5 +1,5 @@
 import firebase from 'firebase/app';
-import 'firebase/firestore';
+import 'firebase/firestore'; //for storing the data in Firebase cloud
 import 'firebase/auth';
 
 // This config key is created in the Firebase account when register the Web App in the Project created in Firebase
@@ -13,6 +13,37 @@ const fbConfig ={
     measurementId: "G-2C4VMEFST3"
 
 };
+
+//to 
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    if(!userAuth) return;
+    
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
+    const snapShot = await userRef.get();
+    if (!snapShot.exists){
+        const {displayName, email} = userAuth;
+        const createdAt = new Date();
+        const lastSignedDate = userAuth.metadata.lastSignInTime;
+        console.log(lastSignedDate);
+        const providerId = userAuth.providerId;
+
+        try{
+            await userRef.set({
+                displayName,
+                email,
+                createdAt,
+                lastSignedDate,
+                providerId,
+                ...additionalData
+            });
+        }
+        catch(error){
+            console.log('error creating user : ', error.message);
+        }
+    }
+    return userRef;
+    
+}
 
 //initialise the firebase app with the given Configuration
 firebase.initializeApp(fbConfig);

@@ -8,13 +8,13 @@ import {ReactComponent as Logo} from '../../assets/crown.svg';
 import {auth} from '../../firebase/firebase.utils';
 
 const Header =({currentUser}) =>(
-
+    
     <div className='header'>
         <Link className='container' to ='/'>
             <Logo />
             {currentUser?
             <div className='welcome-font'>
-            { (`Welcome ${currentUser.displayName}`).toUpperCase() }
+            { (`Welcome ${currentUser}`).toUpperCase() }
             </div>
                 :
             ''
@@ -44,6 +44,7 @@ const Header =({currentUser}) =>(
             </Link>
         
         </div>
+
     </div>
 
 )
