@@ -24,15 +24,24 @@ class App extends React.Component {
 
   componentDidMount(){
     //firebase Auth object gets the information of user change based on this method. This is subscribed to listen to the changes
-      this.unsubscribefromAuth=auth.onAuthStateChanged(async user=> {
-          createUserProfileDocument(user);
-          console.log(user)
-        if(user){
-            this.setState ({currentUser: user.displayName});
-        }
-      })
+     this.unsubscribefromAuth = auth.onAuthStateChanged(async userAuth => {
+          if (userAuth){
+                const userRef = await createUserProfileDocument(userAuth);
+                userRef.onSnapshot(snapShot => {
+                    this.setState({
+                        currentUser:{
+                            id: snapShot.id,
+                            ...snapShot.data()
+                        }
+                    })
+                    console.log("App did mount -> ", this.state);
+                });
+               
+          }
+          this.setState({currentUser:userAuth});
      
-    }
+    });
+}
 
   
 
@@ -43,8 +52,10 @@ class App extends React.Component {
 
 
   render(){
+
     return (
-      <>
+     
+      <div>
         <Header currentUser={this.state.currentUser} />
         <Switch>
           <Route exact path='/' component={HomePage}/>
@@ -52,7 +63,7 @@ class App extends React.Component {
           <Route path='/signin' component={SignInOrRegister}/>
         
         </Switch>
-        </>
+        </div>
     )
   }
 }
