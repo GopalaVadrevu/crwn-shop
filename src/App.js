@@ -34,7 +34,7 @@ class App extends React.Component {
                             ...snapShot.data()
                         }
                     })
-                    console.log("App did mount -> ", this.state);
+                   // console.log("App did mount -> ", this.state);
                 });
                
           }
