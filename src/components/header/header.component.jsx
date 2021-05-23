@@ -15,16 +15,12 @@ const Header =({currentUser}) =>(
         
         <Link className='container' to ='/'>
             <Logo />
-            {currentUser?
-            <div className='welcome-font'>
-            { (`Welcome ${currentUser}`).toUpperCase() }
-            </div>
-                :
-            ''
-            }
         </Link>
-        
+    
         <div className="options">
+             <Link className="option" to='/dashboard'>
+                 DASHBOARD
+             </Link>
             <Link className="option" to='/shop'>
                 SHOP
             </Link>

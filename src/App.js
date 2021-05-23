@@ -8,6 +8,8 @@ import Header from '../src/components/header/header.component'
 import SignInOrRegister from '../src/pages/sign-in-register/sign-in-register.component'
 import {Route, Switch} from 'react-router-dom';
 import {auth,createUserProfileDocument} from '../src/firebase/firebase.utils';
+import DashBoard from '../src/pages/dashboard/dashboard.page';
+
 
 
 
@@ -57,8 +59,11 @@ class App extends React.Component {
      
       <div>
         <Header currentUser={this.state.currentUser} />
+
         <Switch>
+          
           <Route exact path='/' component={HomePage}/>
+          <Route path='/dashboard' component ={DashBoard}/>
           <Route path='/shop' component={ShopPage}/>
           <Route path='/signin' component={SignInOrRegister}/>
         

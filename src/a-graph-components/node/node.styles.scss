@@ -1,0 +1,35 @@
+//need to use the same classes
+.react-flow__node{
+    display: flex;
+    border-radius: 30px;
+    min-width: 80px;
+    width: auto;
+    height: 50px;
+    justify-content: center;
+    letter-spacing: 0.5px;
+    line-height: 50px;
+    padding: 0 35px 0 35px;
+    font-size: 15px;
+    background-color:rgb(183, 196, 209);
+  
+    color: black;
+    text-transform: none;
+    font-weight: bolder;
+    font-family: 'Open Sans Condensed';
+    font-weight: bolder;
+    border: none;
+    cursor:pointer;
+    
+    // to highlight the selected node
+    &.selected{ 
+      color:rgb(214, 32, 32);
+      background-color: rgba(3, 19, 53, 0.815);
+    }
+  
+    &:hover {
+      background-color:black;
+      color: rgb(183, 196, 209);;
+      border: 1px solid black;
+    }
+      
+  }

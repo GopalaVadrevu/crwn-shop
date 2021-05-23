@@ -1,7 +1,12 @@
 .sign-in{
-    width:380px;
+    width:450px;
     display:flex;
     flex-direction: column;
+        //for box shadow effcet
+        margin: 5px 5px;
+        padding: 5px 5px;
+        box-shadow: 4px 3px 8px 1px #969696;
+        -webkit-box-shadow: 4px 3px 8px 1px #969696;
 
     .title{
         margin: 10px 0px;

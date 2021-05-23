@@ -2,8 +2,11 @@
     width: 22%;
     display: flex;
     flex-direction: column;
-    height: 350px;
+    height: 400px;
     align-items: center;
+
+
+
   
     .image {
       width: 100%;
@@ -11,6 +14,8 @@
       background-size: cover;
       background-position: center;
       margin-bottom: 5px;
+      box-shadow: 4px 3px 8px 1px #969696;
+      -webkit-box-shadow: 4px 3px 8px 1px #969696;
     }
   
     .collection-footer {

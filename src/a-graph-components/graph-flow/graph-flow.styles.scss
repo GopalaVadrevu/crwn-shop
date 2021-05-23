@@ -1,0 +1,56 @@
+$base-width:700px;
+
+.title {
+    font-weight: bolder;
+    margin: 0 6px 0;
+    font-size: 22px;
+    color: #4a4a4a;
+  }
+
+  .demo-display{
+    top:0px;
+    right:0px;
+    width: 100%;
+    height:100%;
+    display: flex;
+  
+  }
+  .react-flow__renderer{
+    width: 100%;
+    top:0px;
+    left:0px;
+    display: flex;
+    padding: 2px 2px;
+    margin: 5px auto;
+    justify-content: left;
+    border-color: black;
+    border-style: solid;
+    border:10px;
+
+  
+  
+  }
+  
+  .react-flow {
+    padding: 2px 2px;
+    top:0px;
+    left:0px;
+    margin:10px;
+    border: 4x;
+    background-color:white;
+    display: flex;
+    position: absolute;
+    height: 100%;
+    width: $base-width;
+
+       //for box shadow effcet
+       margin: 5px 5px;
+       padding: 10px 10px;
+       box-shadow: 4px 3px 8px 1px #969696;
+         -webkit-box-shadow: 4px 3px 8px 1px #969696;
+  }
+  .react-flow__controls{
+    left:10px;
+  }
+  
+  
