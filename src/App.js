@@ -2,6 +2,9 @@ import React from 'react';
 
 import './App.css';
 
+import {connect} from 'react-redux';
+import {setCurrentUser} from '../src/redux/user/user.actions';
+
 import HomePage from '../src/pages/homepage/homepage.component'
 import ShopPage from '../src/pages/shop/shop.component';
 import Header from '../src/components/header/header.component'
@@ -15,32 +18,28 @@ import DashBoard from '../src/pages/dashboard/dashboard.page';
 
 class App extends React.Component {
   
-  constructor(props){
-    super(props);
-    this.state ={
-      currentUser: null
-    }
-  }
-  
+  //No construction needed as we are using Redux to set the state
+
+
   unsubscribefromAuth= null
 
   componentDidMount(){
+
+    const {setCurrentUser} = this.props;
     //firebase Auth object gets the information of user change based on this method. This is subscribed to listen to the changes
      this.unsubscribefromAuth = auth.onAuthStateChanged(async userAuth => {
           if (userAuth){
                 const userRef = await createUserProfileDocument(userAuth);
                 userRef.onSnapshot(snapShot => {
-                    this.setState({
-                        currentUser:{
-                            id: snapShot.id,
-                            ...snapShot.data()
-                        }
-                    })
+                    setCurrentUser({
+                        id: snapShot.id,
+                        ...snapShot.data()
+                    });
                    // console.log("App did mount -> ", this.state);
                 });
                
           }
-          this.setState({currentUser:userAuth});
+          setCurrentUser({userAuth});
      
     });
 }
@@ -58,7 +57,7 @@ class App extends React.Component {
     return (
      
       <div>
-        <Header currentUser={this.state.currentUser} />
+        <Header  />
 
         <Switch>
           
@@ -73,4 +72,13 @@ class App extends React.Component {
   }
 }
 
-export default App;
+///export default App; - Changed to add the Redux store access
+
+const mapDispatchToProps = dispatch => ({
+
+  setCurrentUser: user => dispatch(setCurrentUser(user))
+
+});
+
+
+export default connect(null,mapDispatchToProps)(App);

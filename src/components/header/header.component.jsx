@@ -7,6 +7,9 @@ import {ReactComponent as Logo} from '../../assets/crown.svg';
 
 import {auth} from '../../firebase/firebase.utils';
 
+//to connect and get data form Redux
+import {connect} from 'react-redux';
+
 const Header =({currentUser}) =>(
 
     
@@ -46,6 +49,12 @@ const Header =({currentUser}) =>(
 
     </div>
 
-)
+);
 
-export default Header;
+//export default Header; - will be changed after reduce
+
+const mapStateToProps = state =>({
+    currentUser: state.user.currentUser
+});
+
+export default connect(mapStateToProps)(Header);
