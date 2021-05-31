@@ -9,7 +9,7 @@ const NodeComponent = ({ data}) => {
   return (
     < >
     
-      <div >{data.label}</div>
+      <div ></div>
 
       <Handle
       type="source"

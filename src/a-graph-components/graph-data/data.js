@@ -3,7 +3,7 @@ const MetaData = [
     {
         id: "1",
         data:{
-            label:"Study",
+            name:"Study",
             type:"Entity"
             },
         //to be calculated based on the react flow grid sizd
@@ -29,7 +29,7 @@ const MetaData = [
     {
         id: "4",
         data:{
-            label:"Chemical Compound",
+            label:"Chemical",
             type:"Entity"
             },
         position: { x: 500, y: 300 },

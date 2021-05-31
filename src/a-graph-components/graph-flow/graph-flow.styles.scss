@@ -42,7 +42,11 @@ $base-width:700px;
     position: absolute;
     height: 100%;
     width: $base-width;
-
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCE1E7;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    border: 1px solid #DCE1E7;
+    opacity: 1;
        //for box shadow effcet
        margin: 5px 5px;
        padding: 10px 10px;

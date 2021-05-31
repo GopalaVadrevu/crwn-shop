@@ -9,7 +9,7 @@ import HomePage from '../src/pages/homepage/homepage.component'
 import ShopPage from '../src/pages/shop/shop.component';
 import Header from '../src/components/header/header.component'
 import SignInOrRegister from '../src/pages/sign-in-register/sign-in-register.component'
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, Redirect} from 'react-router-dom';
 import {auth,createUserProfileDocument} from '../src/firebase/firebase.utils';
 import DashBoard from '../src/pages/dashboard/dashboard.page';
 
@@ -64,7 +64,8 @@ class App extends React.Component {
           <Route exact path='/' component={HomePage}/>
           <Route path='/dashboard' component ={DashBoard}/>
           <Route path='/shop' component={ShopPage}/>
-          <Route path='/signin' component={SignInOrRegister}/>
+          <Route exact path='/signin' render ={()=>this.props.currentUser ? (<Redirect to='/' />) : (<SignInOrRegister/>)} />
+
         
         </Switch>
         </div>
@@ -73,7 +74,11 @@ class App extends React.Component {
 }
 
 ///export default App; - Changed to add the Redux store access
+const mapStatetoProps = user =>({
+  currentUser: user.currentUser
+});
 
+//from app to sstate
 const mapDispatchToProps = dispatch => ({
 
   setCurrentUser: user => dispatch(setCurrentUser(user))
@@ -81,4 +86,7 @@ const mapDispatchToProps = dispatch => ({
 });
 
 
-export default connect(null,mapDispatchToProps)(App);
+export default connect(
+      mapStatetoProps,
+      mapDispatchToProps)
+      (App);
